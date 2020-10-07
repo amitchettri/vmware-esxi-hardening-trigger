@@ -15,7 +15,7 @@ pipeline{
           def exec_runs = [:]
           ServerName.split(",").each {
             exec_runs["exec_runs${it}"] = {
-              build job: 'os-upgrade-test',
+              build job: "${downstream_build_job_name}",
               parameters: [
                   string(name: 'ServerName', value: "${it}"),
                   string(name: 'CredentialID', value: "${CredentialID}")
