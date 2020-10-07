@@ -9,6 +9,11 @@ pipeline{
     downstream_build = 'vmware-esxi-hardening'
   }
   stages{
+    stage('Checkout'){
+      steps{
+        git "${git_repo_path}"
+      }
+    }
     stage('Trigger downstream builds') {
       steps{
         script{
